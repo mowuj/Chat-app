@@ -30,10 +30,10 @@
                 </div>
                 <div class="name">
                     <h5>{{friend.profile.name}}</h5>
-                    <p>How are you doing today</p>
+                    <p id="lstmsg">How are you doing today</p>
                 </div>
                 <div class="time_new_msg">
-                    <p>7:30am</p> 
+                    
 
                     <div class="msg">0</div>
 
@@ -81,28 +81,27 @@
     </div>
 </div>
 
-<!-- <script>
+<script>
 
     setInterval(getNotification, 1000)
 
     function getNotification() {
-        let url = ""
+        let url = "{% url 'notification' %}"
 
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                let chatNotificationBtn = document.getElementsByClassName("msg")
-                for (let i = 0; i < data.length; i++) {
-                    chatNotificationBtn[i].innerText = data[i]
+                
+                let chatNotificationBtn=document.getElementsByClassName('msg')
+                for (let i=0;i<data.length;i++){
+                    chatNotificationBtn[i].innerText=data[i]
+
                 }
             })
             .catch(error => console.log(error))
     }
 
-</script> -->
-
-
-
+</script>
+<
 
 {% endblock body%}

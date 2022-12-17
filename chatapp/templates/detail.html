@@ -126,28 +126,42 @@
         }
 
 
-let counter=0
+setInterval(receiverMessages,2000)
 
+let counter = {{num}}
 function receiverMessages(){
+    let url = "{% url 'rcv_msg' friend.profile.id %}"
 
-    const data = { number: counter };
 
-    fetch('https://example.com/profile', {
-        method: 'POST', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
+    fetch(url)
         .then((response) => response.json())
         .then((data) => {
             console.log('Success:', data);
+            if (data.length==0){}
+            else{
+                let lastMsg=data[data.length-1]
+
+                if (counter==data.length){console.log("No new Chat")}
+
+                else{
+                    let chat_body = document.getElementById('chat-body')
+                    let chatMessageBox = document.createElement("div")
+                    chatMessageBox.classList.add("chat-box-received")
+                    chatMessageBox.innerText = lastMsg
+                    chat_body.append(chatMessageBox)
+                    document.getElementById("id_body").value = ""
+                }
+            }
+
+            counter=data.length
         })
         .catch((error) => {
             console.error('Error:', error);
         });
 
 }
+
+
 // </script>
 
-{% endblock body%}
+{% endblock body%} 
