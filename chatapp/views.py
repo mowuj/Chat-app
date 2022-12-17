@@ -48,14 +48,6 @@ def receivedMessages(request,pk):
         chat_array.append(chat.body)
     return JsonResponse(chat_array,safe=False)
 
-# def getNotification(request):
-#     user=request.user.profile
-#     friends=user.friends.all()
-#     notify=[]
-#     for friend in friends:
-#         chats=ChatMessage.object.filter(msg_sender__id=friend.profile.id,msg_receiver=user,seen=False)
-#         notify.append(chats.count())
-#     return JsonResponse(notify,safe=False)
 
 def chatNotification(request):
     user = request.user.profile

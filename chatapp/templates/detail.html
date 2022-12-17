@@ -136,7 +136,7 @@ function receiverMessages(){
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            console.log('Success:', data);
+            
             if (data.length==0){}
             else{
                 let lastMsg=data[data.length-1]
